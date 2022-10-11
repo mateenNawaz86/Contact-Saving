@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { connect, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const AddContact = () => {
   const [enteredInp, setEnteredInp] = useState({
@@ -7,13 +9,47 @@ const AddContact = () => {
     contactNum: "",
   });
 
+  const contacts = useSelector((state) => state.contact);
+
   const onChangeHandler = (event) => {
     setEnteredInp({ ...enteredInp, [event.target.name]: event.target.value });
   };
 
   const addStdHandler = (event) => {
     event.preventDefault();
-    console.log(enteredInp);
+
+    if (!enteredInp.name || !enteredInp.email || !enteredInp.contactNum) {
+      return toast.warning("Please fillup the all field!");
+    }
+
+    // check entered email is there already exist or NOT
+    const checkEmail = contacts.find(
+      (contactItem) =>
+        contactItem.email === enteredInp.email && enteredInp.email
+    );
+
+    if (checkEmail) {
+      return toast.error("This email already exist");
+    }
+
+    // check entered number is there already exist or NOT
+    const checkNum = contacts.find(
+      (item) => item.number === enteredInp.contactNum
+    );
+
+    if (checkNum) {
+      return toast.error("This number already exist");
+    }
+
+    // getting data
+    const data = {
+      id: contacts[contacts.length - 1].id + 1,
+      name: enteredInp.name,
+      email: enteredInp.email,
+      contactNum: enteredInp.contactNum,
+    };
+
+    console.log(data);
   };
 
   return (
