@@ -32,7 +32,7 @@ const Navbar = () => {
                   aria-current="page"
                   to="/addcontact"
                 >
-                  Add
+                  Add Contact
                 </Link>
               </li>
               <li className="nav-item">
@@ -40,9 +40,9 @@ const Navbar = () => {
                   className={`nav-link ${
                     location.pathname === "/list" ? "active" : ""
                   }`}
-                  to="/list"
+                  to="/contactlist"
                 >
-                  List
+                  Contact List
                 </Link>
               </li>
             </ul>

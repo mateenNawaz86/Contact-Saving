@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ContactsList from "./ContactsList";
 
 const Home = () => {
   return (
@@ -12,8 +13,8 @@ const Home = () => {
             </Link>
           </div>
 
-          <div className="col-md-6 mx-auto">
-            <h2>Contact List is here for you guys</h2>
+          <div>
+            <ContactsList />
           </div>
         </div>
       </div>

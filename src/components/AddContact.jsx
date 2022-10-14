@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { connect, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { actionCreators } from "./state/index";
 
 const AddContact = () => {
   const [enteredInp, setEnteredInp] = useState({
@@ -10,6 +11,8 @@ const AddContact = () => {
   });
 
   const contacts = useSelector((state) => state.contact);
+
+  const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
     setEnteredInp({ ...enteredInp, [event.target.name]: event.target.value });
@@ -34,7 +37,7 @@ const AddContact = () => {
 
     // check entered number is there already exist or NOT
     const checkNum = contacts.find(
-      (item) => item.number === enteredInp.contactNum
+      (item) => item.contactNum === enteredInp.contactNum
     );
 
     if (checkNum) {
@@ -49,7 +52,13 @@ const AddContact = () => {
       contactNum: enteredInp.contactNum,
     };
 
-    console.log(data);
+    alert(dispatch(actionCreators.addContact(data)));
+
+    setEnteredInp({
+      name: "",
+      email: "",
+      contactNum: "",
+    });
   };
 
   return (
@@ -70,6 +79,7 @@ const AddContact = () => {
                   placeholder="Name"
                   onChange={onChangeHandler}
                   value={enteredInp.name}
+                  autoComplete="off"
                 />
               </div>
               <div className="mb-3">
@@ -93,7 +103,7 @@ const AddContact = () => {
                   id="contactNum"
                   name="contactNum"
                   aria-describedby="emailHelp"
-                  placeholder="Contact Number"
+                  placeholder="03127654532  "
                   onChange={onChangeHandler}
                   value={enteredInp.contactNum}
                 />

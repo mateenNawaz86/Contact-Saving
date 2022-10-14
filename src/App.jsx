@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import AddContact from "./components/AddContact";
 import EditCon from "./components/EditCon";
 import { ToastContainer } from "react-toastify";
+import ContactsList from "./components/ContactsList";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/addcontact" element={<AddContact />} />
+        <Route exact path="/contactlist" element={<ContactsList />} />
         <Route exact path="/edit/:id" element={<EditCon />} />
       </Routes>
     </>
