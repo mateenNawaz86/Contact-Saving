@@ -6,13 +6,13 @@ let initialState = [
     contactNum: "03015167599",
   },
   {
-    id: "2",
+    id: "1",
     name: "Aftab Khan",
     email: "email21@gmail.com",
     contactNum: "03324576599",
   },
   {
-    id: "3",
+    id: "2",
     name: "Aamir Baloch",
     email: "email2@gmail.com",
     contactNum: "03007843054",

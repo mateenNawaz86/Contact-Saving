@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const EditCon = () => {
-  const params = useParams();
+  // const params = useParams();
 
   const [enteredInp, setEnteredInp] = useState({
     name: "",
     email: "",
     contactNum: "",
   });
+
+  const { id } = useParams();
 
   const onChangeHandler = (event) => {
     setEnteredInp({ ...enteredInp, [event.target.name]: event.target.value });
@@ -23,7 +25,7 @@ const EditCon = () => {
     <>
       <div className="container">
         <div className="row">
-          <h1 className="text-center my-5">EDIT CONTACT</h1>
+          <h1 className="text-center my-5">EDIT STUDENT {id}</h1>
           <div className="col-md-6 shadow mx-auto p-5">
             <form onSubmit={addStdHandler}>
               <div className="mb-3">
@@ -67,12 +69,10 @@ const EditCon = () => {
               </div>
 
               <div>
-                <input
-                  type="submit"
-                  value="Update Student"
-                  className="btn btn-info "
-                />
-                <Link to="/" className="btn btn-danger mx-2">
+                <Link to="/" className="btn btn-info btn-small">
+                  Update
+                </Link>
+                <Link to="/" className="btn btn-danger btn-small mx-2">
                   Cancel
                 </Link>
               </div>

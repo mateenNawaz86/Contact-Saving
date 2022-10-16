@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { actionCreators } from "./state/index";
 
@@ -13,6 +14,7 @@ const AddContact = () => {
   const contacts = useSelector((state) => state.contact);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onChangeHandler = (event) => {
     setEnteredInp({ ...enteredInp, [event.target.name]: event.target.value });
@@ -52,7 +54,9 @@ const AddContact = () => {
       contactNum: enteredInp.contactNum,
     };
 
-    alert(dispatch(actionCreators.addContact(data)));
+    dispatch(actionCreators.addContact(data));
+    toast.success("Student added successfully");
+    navigate("/");
 
     setEnteredInp({
       name: "",
