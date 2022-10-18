@@ -1,9 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { actionCreators } from "./state/index";
+import { toast } from "react-toastify";
 
 const ContactsList = () => {
   const contacts = useSelector((state) => state.contact);
+  const dispatch = useDispatch();
+
+  const deleteHandler = (id) => {
+    dispatch(actionCreators.deleteStd(id));
+    toast.success("Student deleted successfully");
+  };
+
   return (
     <>
       <div className="col-lg-12 mx-auto mt-4">
@@ -41,6 +50,7 @@ const ContactsList = () => {
                       data-bs-toggle="tooltip"
                       data-bs-placement="bottom"
                       data-bs-title="Tooltip on bottom"
+                      onClick={() => deleteHandler(contacts.id)}
                     >
                       Dalete
                     </button>

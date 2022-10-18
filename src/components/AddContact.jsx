@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { actionCreators } from "./state/index";
 
@@ -15,6 +15,7 @@ const AddContact = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const onChangeHandler = (event) => {
     setEnteredInp({ ...enteredInp, [event.target.name]: event.target.value });
@@ -30,7 +31,9 @@ const AddContact = () => {
     // check entered email is there already exist or NOT
     const checkEmail = contacts.find(
       (contactItem) =>
-        contactItem.email === enteredInp.email && enteredInp.email
+        contactItem.id !== parseInt(id) &&
+        contactItem.email === enteredInp.email &&
+        enteredInp.email
     );
 
     if (checkEmail) {
@@ -39,7 +42,9 @@ const AddContact = () => {
 
     // check entered number is there already exist or NOT
     const checkNum = contacts.find(
-      (item) => item.contactNum === enteredInp.contactNum
+      (item) =>
+        item.id !== parseInt(id) &&
+        item.contactNum === enteredInp.contactNum
     );
 
     if (checkNum) {
@@ -54,7 +59,7 @@ const AddContact = () => {
       contactNum: enteredInp.contactNum,
     };
 
-    dispatch(actionCreators.addContact(data));
+    dispatch(actionCreators.addStd(data));
     toast.success("Student added successfully");
     navigate("/");
 
