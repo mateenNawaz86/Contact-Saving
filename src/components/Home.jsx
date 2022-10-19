@@ -8,7 +8,7 @@ const Home = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12 my-5 text-right">
-            <Link to="/addContact" className="btn btn-outline-primary d-inline">
+            <Link to="/addcontact" className="btn btn-outline-primary d-inline">
               Add Contact
             </Link>
           </div>

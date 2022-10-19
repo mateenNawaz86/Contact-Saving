@@ -43,8 +43,7 @@ const AddContact = () => {
     // check entered number is there already exist or NOT
     const checkNum = contacts.find(
       (item) =>
-        item.id !== parseInt(id) &&
-        item.contactNum === enteredInp.contactNum
+        item.id !== parseInt(id) && item.contactNum === enteredInp.contactNum
     );
 
     if (checkNum) {
@@ -74,7 +73,7 @@ const AddContact = () => {
     <>
       <div className="container">
         <div className="row">
-          <h1 className="text-center my-5">ADD CONTACT</h1>
+          <h1 className="text-center my-5">ADD STUDENT</h1>
           <div className="col-md-6 shadow mx-auto p-5">
             <form onSubmit={addStdHandler}>
               <div className="mb-3">

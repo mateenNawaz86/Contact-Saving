@@ -15,7 +15,7 @@ const ContactsList = () => {
 
   return (
     <>
-      <div className="col-lg-12 mx-auto mt-4">
+      <div className="col-lg-10 mx-auto mt-4">
         <h2 className="text-center mb-4">ALL OF STUDENTS</h2>
 
         <table className="table table-hover">
@@ -50,7 +50,7 @@ const ContactsList = () => {
                       data-bs-toggle="tooltip"
                       data-bs-placement="bottom"
                       data-bs-title="Tooltip on bottom"
-                      onClick={() => deleteHandler(contacts.id)}
+                      onClick={() => deleteHandler(item.id)}
                     >
                       Dalete
                     </button>

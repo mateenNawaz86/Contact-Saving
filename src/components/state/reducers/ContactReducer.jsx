@@ -35,6 +35,7 @@ const contactReducer = (state = initialState, action) => {
       const deleteStd = state.filter((item) =>
         item.id !== action.payload ? item : null
       );
+      
       return (state = deleteStd);
     default:
       return state;

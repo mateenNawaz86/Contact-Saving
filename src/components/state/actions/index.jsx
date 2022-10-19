@@ -15,6 +15,8 @@ export const updateStd = (item) => {
     });
   };
 };
+
+
 export const deleteStd = (item) => {
   return (dispatch) => {
     dispatch({
